@@ -1,12 +1,14 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
+// postsにあるgetSortedPostsDataをimportしている。
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
+  console.log(allPostsData)
   return {
     props: {
       allPostsData
@@ -16,7 +18,7 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   return (
-    <layout home>
+    <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -36,6 +38,6 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
       </section>
-    </layout>
+    </Layout>
   )
 }
